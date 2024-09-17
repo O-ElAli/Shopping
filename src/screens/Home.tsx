@@ -1,11 +1,13 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { SafeAreaView, View, Text } from 'react-native';
 
 const HomeScreen: React.FC = () => {
     return (
-        <View>
-            <Text>Welcome to the Home Screen!</Text>
-        </View>
+        <SafeAreaView>
+            <View>
+                <Text style={{color:'red'}}>Welcome to the Home Screen!</Text>
+            </View>
+        </SafeAreaView>
     );
 };
 
