@@ -22,9 +22,9 @@ const App = () => {
               drawerActiveTintColor: '#0a8ed9',
               drawerInactiveTintColor: 'white',
               drawerInactiveBackgroundColor: '#0a8ed9',
-              gestureHandlerProps: {
-                hitSlop: { top: 0, bottom: 0, left: 0, right: 0 }, // Adjust swipe area carefully
-              },
+              // gestureHandlerProps: {
+              //   hitSlop: { top: 0, bottom: 0, left: 10, right: 0 }, // Adjust swipe area carefully
+              // },
             }}
           >
             <Drawer.Screen 
