@@ -1,14 +1,21 @@
-import React from 'react'
-import { View, Text, ScrollView, ImageBackground } from 'react-native'
+import React from 'react';
+import { View, Text, ScrollView, ImageBackground, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-import { Villa } from '../assets/DB'
+import { Villa } from '../assets/DB';
 
 const DisplayOptions = () => {
+    const navigation = useNavigation();
+
+    const handlePress = (villa) => {
+        navigation.navigate('Details', { villa });
+    };
+
     return (
         <ScrollView horizontal={true}>
             {Villa.map((villa, index) => (
-                <View
-                    key={index}
+                <TouchableOpacity 
+                    key={index} 
                     style={{
                         height: 280,
                         width: 230,
@@ -16,6 +23,7 @@ const DisplayOptions = () => {
                         borderRadius: 20,
                         overflow: 'hidden'
                     }}
+                    onPress={() => handlePress(villa)}
                 >
                     <ImageBackground
                         source={{ uri: villa.images[0] }}
@@ -42,7 +50,7 @@ const DisplayOptions = () => {
                             {/* Name in the bottom left */}
                             <Text style={{
                                 position: 'absolute',
-                                bottom: 10,
+                                bottom: 35,
                                 left: 10,
                                 color: 'white',
                                 fontSize: 18,
@@ -50,12 +58,21 @@ const DisplayOptions = () => {
                             }}>
                                 {villa.name}
                             </Text>
+                            <Text style={{
+                                position: 'absolute',
+                                bottom: 10,
+                                left: 10,
+                                color: 'white',
+                                fontSize: 18,
+                            }}>
+                                {villa.location}
+                            </Text>
                         </View>
                     </ImageBackground>
-                </View>
+                </TouchableOpacity>
             ))}
         </ScrollView>
-    )
+    );
 }
 
 export default DisplayOptions;

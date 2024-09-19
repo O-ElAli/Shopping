@@ -8,6 +8,7 @@ import Header from '../Components/Header';
 import DisplayOptions from '../Components/DisplayOptions';
 import MoreOptions from '../Components/MoreOptions';
 
+import Icon from 'react-native-ionicons'
 
 const HomeScreen: React.FC = () => {
 
