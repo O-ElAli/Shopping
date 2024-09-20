@@ -12,7 +12,18 @@ const DisplayOptions = () => {
     };
 
     return (
-        <ScrollView horizontal={true}>
+        <View>
+            <Text
+            style={{
+                color:'black',
+                fontSize:20,
+                margin:10,
+                //add font family
+            }}
+            >
+                Near from you
+            </Text>
+            <ScrollView horizontal={true}>
             {Villa.map((villa, index) => (
                 <TouchableOpacity 
                     key={index} 
@@ -62,7 +73,7 @@ const DisplayOptions = () => {
                                 position: 'absolute',
                                 bottom: 10,
                                 left: 10,
-                                color: 'white',
+                                color: '#fefefef',
                                 fontSize: 18,
                             }}>
                                 {villa.location}
@@ -72,6 +83,7 @@ const DisplayOptions = () => {
                 </TouchableOpacity>
             ))}
         </ScrollView>
+        </View>
     );
 }
 

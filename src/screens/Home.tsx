@@ -12,36 +12,45 @@ import Icon from 'react-native-ionicons'
 
 const HomeScreen: React.FC = () => {
 
+    const [visible,setVisible] = useState(true)
 
 
     return (
         <ScrollView>
             {/* Header */}
-            <Header />
+            <Header setVisible={setVisible} visible={visible}/>
             {/* Main Area */}
-            <Text
-            style={{
-                color:'black',
-                fontSize:20,
-                margin:10,
-                //add font family
-            }}
-            >
-                Near from you
-            </Text>
             
-            <DisplayOptions />
             
-            <Text
-            style={{
-                color:'black',
-                fontSize:18,
-                margin:10,
-                //add font family
-            }}
-            >
-                Best for you
-            </Text>
+            {visible && <DisplayOptions />}
+            
+            <View style={{flexDirection:'row'}}>
+                <Text
+                style={{
+                    color:'black',
+                    fontSize:18,
+                    margin:10,
+                    //add font family
+                }}
+                >
+                    Best for you
+                </Text>
+                {
+                    !visible && <TouchableOpacity onPress={() => setVisible(true)}>
+                    <Text style={{
+                    color:'black',
+                    fontSize:18,
+                    margin:10,
+                    //add font family
+                }}
+                >
+                        Show more
+                    </Text>
+                </TouchableOpacity>
+                }
+                
+            </View>
+            
 
             <MoreOptions />
 

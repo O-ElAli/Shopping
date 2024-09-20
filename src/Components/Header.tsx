@@ -18,9 +18,21 @@ const countries = [
     // Add more countries as needed
 ];
 
-const HeaderArea = () => {
+/*
+
+setVisible:
+
+    Type: React.Dispatch<React.SetStateAction<boolean>>
+    This is a function type that comes from React. It represents a setter function (similar to the one returned by useState).
+    React.Dispatch<React.SetStateAction<boolean>> is a fancy way of saying: "This is a function that takes a new value (or a function that returns a value) to update a boolean state."
+    In simpler terms, setVisible is a function used to change the visible state, typically used to show or hide UI components.
+
+*/
+
+const HeaderArea: React.FC<{ setVisible: React.Dispatch<React.SetStateAction<boolean>>, visible: boolean }> = ({ setVisible, visible }) =>  {
     const [selectedCountry, setSelectedCountry] = useState('au');
     const [selectedArea, setSelectedArea] = useState<string | null>(null);
+
 
     const handleAreaPress = (area: string) => {
         setSelectedArea(area);
@@ -59,21 +71,27 @@ const HeaderArea = () => {
                         backgroundColor: '#f7f7f7',
                         margin: 10,
                         borderRadius: 10,
-                        width: '70%'
+                        width: '70%',
+                        paddingHorizontal:20
                     }}
                 />
                 <TouchableOpacity
                     style={{
                         backgroundColor: '#72c2f0',
-                        width: 70,
-                        height: 70,
+                        width: 60,
+                        height: 60,
                         margin: 5,
                         borderRadius: 15,
                         justifyContent: 'center',
                         alignItems: 'center'
                     }}
+                    onPress={()=>{setVisible(false)}}
                 >
-                    <Text>Filters</Text>
+                    <Text
+                    style={{
+                        color:'white'
+                    }}
+                    >Search</Text>
                 </TouchableOpacity>
             </View>
             <ScrollView horizontal={true}>
