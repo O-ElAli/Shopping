@@ -2,12 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { TextInput, ScrollView } from 'react-native-gesture-handler';
-
-import Icon from 'react-native-ionicons'
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-
-
-
+import Icon from 'react-native-ionicons';
 
 const countries = [
     { label: 'United States', value: 'us' },
@@ -29,13 +24,18 @@ setVisible:
 
 */
 
-const HeaderArea: React.FC<{ setVisible: React.Dispatch<React.SetStateAction<boolean>>, visible: boolean }> = ({ setVisible, visible }) =>  {
+const HeaderArea: React.FC<{ setVisible: React.Dispatch<React.SetStateAction<boolean>>, visible: boolean, setSearchQuery: React.Dispatch<React.SetStateAction<string>>, setSearchSubmitted: React.Dispatch<React.SetStateAction<boolean>> }> = ({ setVisible, visible, setSearchQuery, setSearchSubmitted }) => {
     const [selectedCountry, setSelectedCountry] = useState('au');
     const [selectedArea, setSelectedArea] = useState<string | null>(null);
-
+    const [searchQuery, setSearchQueryState] = useState('');
 
     const handleAreaPress = (area: string) => {
         setSelectedArea(area);
+    };
+
+    const handleSearch = () => {
+        setSearchQuery(searchQuery); // Update parent component's search query
+        setVisible(false); // Hide other options if needed
     };
 
     return (
@@ -44,8 +44,8 @@ const HeaderArea: React.FC<{ setVisible: React.Dispatch<React.SetStateAction<boo
             <View style={{
                 marginLeft: 10,
                 flexDirection: 'row',
-                justifyContent: 'space-between', // Add this to distribute the space
-                alignItems: 'center', // Vertically center items
+                justifyContent: 'space-between',
+                alignItems: 'center',
             }}>
                 <Picker
                     selectedValue={selectedCountry}
@@ -65,6 +65,8 @@ const HeaderArea: React.FC<{ setVisible: React.Dispatch<React.SetStateAction<boo
             <View style={{ flexDirection: 'row' }}>
                 <TextInput
                     placeholder='Search address, or near you'
+                    value={searchQuery}
+                    onChangeText={setSearchQueryState} // Still keep this to update the local state
                     style={{
                         color: 'black',
                         fontSize: 15,
@@ -72,7 +74,7 @@ const HeaderArea: React.FC<{ setVisible: React.Dispatch<React.SetStateAction<boo
                         margin: 10,
                         borderRadius: 10,
                         width: '70%',
-                        paddingHorizontal:20
+                        paddingHorizontal: 20
                     }}
                 />
                 <TouchableOpacity
@@ -85,13 +87,9 @@ const HeaderArea: React.FC<{ setVisible: React.Dispatch<React.SetStateAction<boo
                         justifyContent: 'center',
                         alignItems: 'center'
                     }}
-                    onPress={()=>{setVisible(false)}}
+                    onPress={handleSearch}
                 >
-                    <Text
-                    style={{
-                        color:'white'
-                    }}
-                    >Search</Text>
+                    <Text style={{ color: 'white' }}>Search</Text>
                 </TouchableOpacity>
             </View>
             <ScrollView horizontal={true}>
@@ -126,7 +124,7 @@ const Areas: React.FC<AreaTypes> = ({ name, isSelected, onPress }) => {
 
 const headerStyle = StyleSheet.create({
     areas: {
-        backgroundColor: '#e0e0e0', // Inactive state color
+        backgroundColor: '#e0e0e0',
         padding: 12,
         margin: 10,
         borderRadius: 15,
@@ -135,13 +133,13 @@ const headerStyle = StyleSheet.create({
     },
     selectedArea: {
         backgroundColor: '#72c2f0',
-        elevation:10 // Active state color
+        elevation: 10
     },
     text: {
-        color: 'black', // Inactive state text color
+        color: 'black',
     },
     selectedText: {
-        color: 'white', // Active state text color
+        color: 'white',
     }
 });
 

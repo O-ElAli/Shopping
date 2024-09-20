@@ -11,7 +11,9 @@ export const Villa = [
         price: '100jds/night',
         bedrooms: '4',
         bathrooms: '3',
-        description: 'A cozy chalet nestled in the hills of Zay, perfect for a peaceful getaway.'
+        description: 'A cozy chalet nestled in the hills of Zay, perfect for a peaceful getaway.',
+        owner: 'Sarah Johnson',
+        owner_picture: 'https://img.freepik.com/free-photo/portrait-young-woman-with-natural-make-up_23-2149084942.jpg?size=626&ext=jpg'
     },
     {
         name: 'Horizon 2 Cozy Villa',
@@ -25,7 +27,9 @@ export const Villa = [
         price: '200jds/night',
         bedrooms: '7',
         bathrooms: '5',
-        description: 'A spacious villa in Amman with modern amenities and a relaxing atmosphere.'
+        description: 'A spacious villa in Amman with modern amenities and a relaxing atmosphere.',
+        owner: 'Michael Smith',
+        owner_picture: 'https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?size=626&ext=jpg'
     },
     {
         name: 'Horizon Villa',
@@ -39,7 +43,9 @@ export const Villa = [
         price: '150jds/night',
         bedrooms: '6',
         bathrooms: '3',
-        description: 'A stylish villa in the heart of Amman, offering comfort and convenience.'
+        description: 'A stylish villa in the heart of Amman, offering comfort and convenience.',
+        owner: 'Emily Davis',
+        owner_picture: 'https://img.freepik.com/premium-photo/man-with-beard-white-shirt-that-says-he-is-wearing-white-shirt_1308172-274006.jpg?size=626&ext=jpg'
     },
     {
         name: 'Sunset Retreat',
@@ -53,7 +59,9 @@ export const Villa = [
         price: '250jds/night',
         bedrooms: '3',
         bathrooms: '2',
-        description: 'A breathtaking retreat in the desert of Wadi Rum, perfect for a sunset escape.'
+        description: 'A breathtaking retreat in the desert of Wadi Rum, perfect for a sunset escape.',
+        owner: 'David Brown',
+        owner_picture: 'https://img.freepik.com/premium-photo/faceforward-headshot-confident-young-man-posing-headshot_76964-484170.jpg?size=626&ext=jpg&ga=GA1.1.580575782.1726849212&semt=ais_hybrid'
     },
     {
         name: 'Lakeside Villa',
@@ -67,7 +75,9 @@ export const Villa = [
         price: '180jds/night',
         bedrooms: '5',
         bathrooms: '3',
-        description: 'A serene villa by the Dead Sea, offering stunning views and peaceful surroundings.'
+        description: 'A serene villa by the Dead Sea, offering stunning views and peaceful surroundings.',
+        owner: 'Sophia Wilson',
+        owner_picture: 'https://img.freepik.com/free-photo/portrait-young-woman-with-natural-make-up_23-2149084911.jpg?size=626&ext=jpg&ga=GA1.1.580575782.1726849212&semt=ais_hybrid'
     },
     {
         name: 'Mountain Lodge',
@@ -81,6 +91,9 @@ export const Villa = [
         price: '220jds/night',
         bedrooms: '6',
         bathrooms: '5',
-        description: 'A luxurious lodge in the mountains of Petra, perfect for exploring the ancient city.'
+        description: 'A luxurious lodge in the mountains of Petra, perfect for exploring the ancient city.',
+        owner: 'James Taylor',
+        owner_picture: 'https://img.freepik.com/free-photo/close-up-profile-portrait-young-man-isolated-grey-studio-background-male-face-with-collagen-patches-eyes-concept-men-s-health-beauty-cosmetology-body-skin-care-anti-aging_155003-33872.jpg?size=626&ext=jpg&ga=GA1.1.580575782.1726849212&semt=ais_hybrid6'
     }
 ];
+

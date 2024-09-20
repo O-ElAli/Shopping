@@ -1,11 +1,18 @@
 import React from 'react';
 import { View, TouchableOpacity, Image, StyleSheet, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-
 import { Villa } from '../assets/DB';
 
-const MoreOptions = () => {
+const MoreOptions = ({ searchQuery }) => {
     const navigation = useNavigation();
+
+    // Filter villas based on the search query
+    const filteredVillas = Villa.filter(villa => 
+        villa.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        villa.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        villa.price.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        villa.bedrooms.toLowerCase().includes(searchQuery.toLowerCase()) 
+    );
 
     const handlePress = (villa) => {
         navigation.navigate('Details', { villa });
@@ -13,7 +20,7 @@ const MoreOptions = () => {
 
     return (
         <View style={styles.container}>
-            {Villa.map((villa, index) => (
+            {filteredVillas.map((villa, index) => (
                 <TouchableOpacity 
                     key={index} 
                     style={styles.option}

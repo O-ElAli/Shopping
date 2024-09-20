@@ -1,63 +1,52 @@
-import React from 'react';
-import { SafeAreaView, View, Text, TouchableOpacity, Image , ImageBackground} from 'react-native';
-import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { FlatList, ScrollView, TextInput } from 'react-native-gesture-handler';
+import React, { useState } from 'react';
+import { SafeAreaView, View, Text, TouchableOpacity, ScrollView } from 'react-native';
 
 import Header from '../Components/Header';
 import DisplayOptions from '../Components/DisplayOptions';
 import MoreOptions from '../Components/MoreOptions';
 
-import Icon from 'react-native-ionicons'
-
 const HomeScreen: React.FC = () => {
-
-    const [visible,setVisible] = useState(true)
-
+    const [visible, setVisible] = useState(true);
+    const [searchQuery, setSearchQuery] = useState('');  // Add search query state
 
     return (
         <ScrollView>
             {/* Header */}
-            <Header setVisible={setVisible} visible={visible}/>
+            <Header setVisible={setVisible} visible={visible} setSearchQuery={setSearchQuery} />
+
             {/* Main Area */}
-            
-            
             {visible && <DisplayOptions />}
-            
-            <View style={{flexDirection:'row'}}>
+
+            <View style={{ flexDirection: 'row' }}>
                 <Text
-                style={{
-                    color:'black',
-                    fontSize:18,
-                    margin:10,
-                    //add font family
-                }}
+                    style={{
+                        color: 'black',
+                        fontSize: 18,
+                        margin: 10,
+                    }}
                 >
                     Best for you
                 </Text>
                 {
-                    !visible && <TouchableOpacity onPress={() => setVisible(true)}>
-                    <Text style={{
-                    color:'black',
-                    fontSize:18,
-                    margin:10,
-                    //add font family
-                }}
-                >
-                        Show more
-                    </Text>
-                </TouchableOpacity>
+                    !visible && (
+                        <TouchableOpacity onPress={() => setVisible(true)}>
+                            <Text style={{
+                                color: 'black',
+                                fontSize: 18,
+                                margin: 10,
+                            }}>
+                                Show more
+                            </Text>
+                        </TouchableOpacity>
+                    )
                 }
-                
             </View>
-            
 
-            <MoreOptions />
-
+            {/* Pass searchQuery to MoreOptions */}
+            <MoreOptions searchQuery={searchQuery} />
 
         </ScrollView>
     );
 };
 
 export default HomeScreen;
-//connect hitslop to a specific class
