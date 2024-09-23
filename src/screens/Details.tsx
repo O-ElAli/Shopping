@@ -158,7 +158,7 @@ const DetailsScreen: React.FC = () => {
         </ScrollView>
     );
 };
-
+//add footer
 const styles = StyleSheet.create({
     container: {
         padding: 20,
